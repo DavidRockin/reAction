@@ -23,8 +23,11 @@
 </script>
 
 <style scoped>
+    .sidebar{
+        width: 100%;
+    }
     .sidebar, .sidebar > ul {
-        height: calc(100vh - 60px);
+        height: 100%;
     }
     .sidebar li.el-menu-item {
         text-align: left;
