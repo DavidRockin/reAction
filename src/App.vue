@@ -1,14 +1,16 @@
 <template>
   <div id="app">
     <Toolbar />
+    <Sidebar />
   </div>
 </template>
 
 <script>
   import Toolbar from './components/template/Toolbar'
+  import Sidebar from './components/template/Sidebar'
 
   export default {
-    components: { Toolbar }
+    components: { Toolbar, Sidebar }
   }
 </script>
 
