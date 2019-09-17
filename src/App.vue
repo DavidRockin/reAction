@@ -2,10 +2,10 @@
   <div id="app">
     <Toolbar />
     <el-row class='ebola'>
-      <el-col :span="4">
+      <el-col :span="5">
         <Sidebar />
       </el-col>
-      <el-col :span="14">
+      <el-col :span="13">
         <MissingGoal v-if='!hasGoalActive' />
         <Editor v-if='hasGoalActive' />
       </el-col>

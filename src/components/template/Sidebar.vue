@@ -37,7 +37,7 @@
 
 <style scoped>
     .sidebar{
-        width: 100%;
+        width: 100% !important;
     }
     .sidebar, .sidebar > ul {
         height: 100%;
