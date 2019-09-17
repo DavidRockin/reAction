@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <Toolbar />
+    <Toolbar class='toolbar-wrapper' />
     <el-row class='ebola'>
-      <el-col :span="5">
+      <el-col :span="5" class='sidebar-wrapper'>
         <Sidebar />
       </el-col>
-      <el-col :span="13">
+      <el-col :span="13" class='content-wrapper'>
         <MissingGoal v-if='!hasGoalActive' />
         <Editor v-if='hasGoalActive' />
       </el-col>
@@ -45,5 +45,9 @@
   }
   .ebola > .el-col, .h-100 {
     height: calc(100vh - 60px);
+  }
+  .content-wrapper {
+    height: 100%;
+    overflow: auto;
   }
 </style>
