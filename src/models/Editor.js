@@ -15,7 +15,7 @@ class EditorModel
 
     openGoal(goal, id)
     {
-        ReactStore.commit('setActive', goal, i)
+        ReactStore.commit('setActive', goal, id)
     }
 
     closeGoal(goal, id)
