@@ -22,9 +22,16 @@
 </script>
 
 <style scoped>
+    code > span {
+        color: #FFF;
+        background: #3f3f3f;
+        padding: 16px 20px;
+        display: inline-block;
+        margin: -16px -20px 15px;
+    }
     code {
         background: #303133;
-        color: #FFF;
+        color: #dedede;
         display: block;
         width: 100%;
         height: 100%;
@@ -36,5 +43,6 @@
     }
     code > pre {
         white-space: pre-wrap;
+        line-height: 1.3;
     }
 </style>
