@@ -1,13 +1,13 @@
 <template>
     <el-header style="padding: 0">
-        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
+        <el-menu :default-active='activeIndex + ""' class="el-menu-demo" mode="horizontal">
             <el-menu-item>
                 <i class="el-icon-folder"></i> Load Goal
             </el-menu-item>
             <el-menu-item>
                 <i class="el-icon-share"></i> Export
             </el-menu-item>
-            <el-menu-item>
+            <el-menu-item @click="newGoal()">
                 <i class="el-icon-plus"></i> Create Goal
             </el-menu-item>
             <el-menu-item style="float:right" @click="newTab('https://github.com/DavidRockin/reAction')">
@@ -21,12 +21,23 @@
 </template>
 
 <script>
+    import { ReactStore } from '../../store/react'
   export default {
     name: 'Toolbar',
+      data() {
+        return {
+            activeIndex: 0
+        }
+      },
     methods: {
       newTab(href) {
         window.open(href, '_blank');
-      }
+      },
+        newGoal() {
+          ReactStore.commit('newGoal', {
+              name: `Untitled Goal`
+          })
+        }
     }
   }
 </script>

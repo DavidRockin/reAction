@@ -4,22 +4,33 @@
                  background-color="#545c64"
                  text-color="#fff"
                  active-text-color="#ffd04b"
-                 default-active="1"
+                 @select='changeProject'
         >
-            <el-menu-item index="1">
-                <span>Project Name</span>
-            </el-menu-item>
-            <el-menu-item index="2">
-                <span>Project Name</span>
+            <el-menu-item v-for='(p, k) in projects' :key='k' :index='k'>
+                <span>{{ p.name || 'Untitled Project' }}</span> {{ defaultProject.name || 'n/a' }}
             </el-menu-item>
         </el-menu>
     </el-aside>
 </template>
 
 <script>
-  export default {
-    name: 'Sidebar.vue'
-  }
+    import { ReactStore } from '../../store/react'
+    export default {
+        name: 'Sidebar.vue',
+        data() {
+            return {
+                defaultProject: 0
+            }
+        },
+        computed: {
+            projects: () => ReactStore.state.goals
+        },
+        methods: {
+            changeProject (i) {
+                this.defaultProject = this.projects[i] || null
+            }
+        }
+    }
 </script>
 
 <style scoped>
