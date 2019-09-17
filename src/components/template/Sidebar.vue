@@ -6,8 +6,8 @@
                  active-text-color="#ffd04b"
                  @select='changeProject'
         >
-            <el-menu-item v-for='(p, k) in projects' :key='k' :index='k'>
-                <span>{{ p.name || 'Untitled Project' }}</span> {{ defaultProject.name || 'n/a' }}
+            <el-menu-item v-for='(p, k) in projects' :key='k' :index='k + ""'>
+                <span>{{ k }} :: {{ p.name || 'Untitled Project' }}</span> {{ defaultProject.index || 'n/a' }}
             </el-menu-item>
         </el-menu>
     </el-aside>
@@ -27,6 +27,8 @@
         },
         methods: {
             changeProject (i) {
+                ReactStore.commit('setActive', this.projects[i], i)
+                this.projects[i].index = i
                 this.defaultProject = this.projects[i] || null
             }
         }

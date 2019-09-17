@@ -6,9 +6,13 @@ Vue.use(Vuex)
 export const ReactStore = new Vuex.Store({
     state: {
         actions: [],
-        goals: []
+        goals: [],
+        activeGoal: null
     },
     mutations: {
+        setActive (state, goal, index) {
+            state.activeGoal = goal || state.goals[index]
+        },
         newGoal (state, goal) {
             state.goals.push(goal)
         }
