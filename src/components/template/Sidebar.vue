@@ -14,6 +14,7 @@
 </template>
 
 <script>
+    import EditorModel from '../../models/Editor'
     import { ReactStore } from '../../store/react'
     export default {
         name: 'Sidebar.vue',
@@ -27,7 +28,7 @@
         },
         methods: {
             changeProject (i) {
-                ReactStore.commit('setActive', this.projects[i], i)
+                EditorModel.openGoal(this.projects[i] || null, i)
                 this.projects[i].index = i
                 this.defaultProject = this.projects[i] || null
             }

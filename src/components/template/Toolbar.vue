@@ -21,6 +21,7 @@
 </template>
 
 <script>
+    import EditorModel from '../../models/Editor'
     import { ReactStore } from '../../store/react'
   export default {
     name: 'Toolbar',
@@ -34,9 +35,7 @@
         window.open(href, '_blank');
       },
         newGoal() {
-          ReactStore.commit('newGoal', {
-              name: `Untitled Goal`
-          })
+          EditorModel.newGoal()
         }
     }
   }

@@ -25,14 +25,10 @@
 </template>
 
 <script>
-    import { ReactStore } from '../../store/react'
+    import EditorModel from '../../models/Editor'
     export default {
         methods: {
-            newGoal() {
-                ReactStore.commit('newGoal', {
-                    name: `Untitled Goal`
-                })
-            }
+            newGoal: () => EditorModel.newGoal()
         }
     }
 </script>
