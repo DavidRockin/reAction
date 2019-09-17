@@ -31,5 +31,10 @@
         text-align: left;
         padding: 16px 20px;
         box-sizing: border-box;
+        y-overflow: auto;
+        x-overflow: hidden;
+    }
+    code > pre {
+        white-space: pre-wrap;
     }
 </style>
