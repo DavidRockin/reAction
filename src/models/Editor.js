@@ -18,10 +18,9 @@ class EditorModel
      */
     newGoal(data)
     {
-        ReactStore.commit('newGoal', data || {
+        ReactStore.commit('addGoal', data || {
             name: `Untitle Goal`
         })
-        this.useLastGoal()
     }
 
     /**
@@ -42,9 +41,10 @@ class EditorModel
      * @param goal the goal to use, if null we'll use the index
      * @param id the goal's index ID
      */
-    openGoal(goal, id)
+    openGoal(id)
     {
-        ReactStore.commit('setActive', goal, id)
+        console.log(id)
+        ReactStore.commit('setActive', id)
     }
 
     /**

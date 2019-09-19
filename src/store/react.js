@@ -5,16 +5,27 @@ Vue.use(Vuex)
 
 export const ReactStore = new Vuex.Store({
     state: {
-        actions: [],
         goals: [],
         activeGoal: null
     },
+    getters: {
+        activeGoal: s => s.goals.find(g => g._id === s.activeGoal ? g : null) || null
+    },
     mutations: {
-        setActive (state, goal, index) {
-            state.activeGoal = goal || state.goals[index]
+        setActive (state, id) {
+            state.activeGoal = id
         },
-        newGoal (state, goal) {
+        addGoal (state, goal) {
+            goal._id = Math.random().toString(26)
+            goal.name += goal._id
             state.goals.push(goal)
+        },
+        updateActive (state, data) {
+            for (var k in state.goals) {
+                const g = state.goals[k]
+                if (g._id === state.activeGoal)
+                    state.goals[k] = { ...g, ...data }
+            }
         }
     }
 })

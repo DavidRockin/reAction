@@ -6,8 +6,8 @@
                  active-text-color="#ffd04b"
                  @select='changeProject'
         >
-            <el-menu-item v-for='(p, k) in projects' :key='k' :index='k + ""'>
-                <span>{{ k }} :: {{ p.name || 'Untitled Project' }}</span> {{ defaultProject.index || 'n/a' }}
+            <el-menu-item v-for='(p, k) in projects' :key='k' :index='k + ""' :data-gid='p._id'>
+                <span>{{ k }} :: {{ p.name || 'Untitled Project' }}</span>
             </el-menu-item>
         </el-menu>
     </el-aside>
@@ -18,19 +18,14 @@
     import { ReactStore } from '../../store/react'
     export default {
         name: 'Sidebar.vue',
-        data() {
-            return {
-                defaultProject: 0
-            }
-        },
         computed: {
             projects: () => ReactStore.state.goals
         },
         methods: {
-            changeProject (i) {
-                EditorModel.openGoal(this.projects[i] || null, i)
-                this.projects[i].index = i
-                this.defaultProject = this.projects[i] || null
+            changeProject (i, j, k) {
+                this.$nextTick(function() {
+                    EditorModel.openGoal(k.$el.attributes['data-gid'].value)
+                })
             }
         }
     }

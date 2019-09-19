@@ -1,7 +1,7 @@
 <template>
     <div class='h-100'>
         <code>
-            <span>Your action JSON file will automagically be generated below.</span>
+            <span>Your action JSON file will automagically be generated below:</span>
             <pre>{{ previewGoalTarget }}</pre>
         </code>
     </div>
@@ -9,14 +9,28 @@
 
 <script>
     import { ReactStore } from '../../store/react'
+    import { mapState } from 'vuex'
+
     export default {
-        computed: {
-            previewGoalTarget () {
-                const r = ReactStore.state.activeGoal || null
-                if (r === null) return ''
-                delete r.index
-                return r
+        store: ReactStore,
+        data() {
+            return {
+                previewGoalTarget: ''
             }
+        },
+        computed: mapState(['activeGoal', 'goals']),
+        methods: {
+            updatePreview() {
+                this.$nextTick(function() {
+                    console.log('fff')
+                    console.log(ReactStore.getters.activeGoal._id)
+                    this.previewGoalTarget = ReactStore.getters.activeGoal || 'l'
+                })
+            }
+        },
+        watch: {
+            'activeGoal': 'updatePreview',
+            'goals': 'updatePreview'
         }
     }
 </script>

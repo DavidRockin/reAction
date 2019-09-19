@@ -8,21 +8,21 @@
                 </p>
             </div>
             <div style='text-align: left'>
-                <el-form :label-position="labelPosition" label-width="100px" :model="formLabelAlign">
+                <el-form :label-position="labelPosition" label-width="100px" :model="goalData">
                     <el-form-item label="Name">
-                        <el-input v-model="formLabelAlign.name"></el-input>
+                        <el-input v-model="goalData.name"></el-input>
                     </el-form-item>
                     <el-form-item label="Description">
-                        <el-input v-model="formLabelAlign.description"></el-input>
+                        <el-input v-model="goalData.description"></el-input>
                     </el-form-item>
                     <el-form-item label="Author">
-                        <el-input v-model="formLabelAlign.author"></el-input>
+                        <el-input v-model="goalData.author"></el-input>
                     </el-form-item>
                     <el-form-item label="Conditions">
-                        <el-input v-model="formLabelAlign.conditions"></el-input>
+                        <el-input v-model="goalData.conditions"></el-input>
                     </el-form-item>
                     <el-form-item label="Reactions">
-                        <el-input v-model="formLabelAlign.reactions"></el-input>
+                        <el-input v-model="goalData.reactions"></el-input>
                     </el-form-item>
                     <el-form-item label="Interval">
                         <el-input v-model="intervalAmount"></el-input>
@@ -36,17 +36,17 @@
                         </el-select>
                     </el-form-item>
                     <el-form-item label="Max Health">
-                        <el-input v-model="formLabelAlign['action-health-max']"></el-input>
+                        <el-input v-model="goalData['action-health-max']"></el-input>
                     </el-form-item>
                     <el-form-item label="Regen Health">
-                        <el-input v-model="formLabelAlign['action-health-regen']"></el-input>
+                        <el-input v-model="goalData['action-health-regen']"></el-input>
                     </el-form-item>
                     <el-form-item label="Damage Health">
-                        <el-input v-model="formLabelAlign['action-health-damage']"></el-input>
+                        <el-input v-model="goalData['action-health-damage']"></el-input>
                     </el-form-item>
                     <el-form-item label="Enabled">
                         <el-switch
-                            v-model="formLabelAlign.enabled"
+                            v-model="goalData.enabled"
                             active-color="#13ce66"
                             inactive-color="#ff4949">
                         </el-switch>
@@ -65,9 +65,11 @@
 
 <script>
 // infer from https://github.com/VolmitSoftware/React/blob/master/src/main/java/com/volmit/react/xrai/RAIGoal.java
-
+import { mapState } from 'vuex'
 import { ReactStore } from '../../store/react'
+
 export default {
+    store: ReactStore,
     data() {
         return {
             labelPosition: 'right',
@@ -80,7 +82,7 @@ export default {
             },
             intervalAmount: 0,
             intervalType: 's',
-            formLabelAlign: {
+            goalData: {
                 name: 'My test goal',
                 description: 'This will do some magic',
                 author: 'VolmitSoftware Studio',
@@ -95,23 +97,28 @@ export default {
     },
     methods: {
         updateGoal (t) {
-            t = typeof t === 'object' ? t : this.formLabelAlign
+            t = typeof t === 'object' ? t : this.goalData
             t.interval = this.interval
-            ReactStore.state.activeGoal = t || this.formLabelAlign
+            ReactStore.commit('updateActive', t)
+        },
+        reset() {
+            this.goalData = ReactStore.getters.activeGoal
         }
     },
     computed: {
+        ...mapState(['activeGoal', 'goals']),
         interval: function() {
             return this.intervalAmount + this.intervalType
         }
     },
     watch: {
-        formLabelAlign: {
+        goalData: {
             handler: 'updateGoal',
             deep: true,
         },
         intervalAmount: 'updateGoal',
-        intervalType: 'updateGoal'
+        intervalType: 'updateGoal',
+        'activeGoal': 'reset'
     }
 }
 </script>

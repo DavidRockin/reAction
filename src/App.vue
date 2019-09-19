@@ -6,6 +6,8 @@
         <Sidebar />
       </el-col>
       <el-col :span="13" class='content-wrapper'>
+          <code>{{ ReactStore.getters.activeGoal }}</code>
+          <code>{{ ReactStore.state }}</code>
         <MissingGoal v-if='!hasGoalActive' />
         <Editor v-if='hasGoalActive' />
       </el-col>
@@ -28,6 +30,7 @@
   export default {
     components: { Toolbar, Sidebar, Editor, Code, MissingGoal },
     computed: {
+        ReactStore: () => ReactStore,
       hasGoalActive: () => ReactStore.state.activeGoal !== null
     }
   }
