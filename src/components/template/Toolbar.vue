@@ -2,7 +2,9 @@
     <el-header style="padding: 0">
         <el-menu :default-active='activeIndex + ""' class="el-menu-demo" mode="horizontal">
             <el-menu-item>
-                <i class="el-icon-folder"></i> Load Goal
+                <FileUpload>
+                    <i class="el-icon-folder"></i> Load Goal
+                </FileUpload>
             </el-menu-item>
             <el-menu-item>
                 <i class="el-icon-share"></i> Export
@@ -23,8 +25,11 @@
 <script>
     import EditorModel from '../../models/Editor'
     import { ReactStore } from '../../store/react'
+    import FileUpload from '../partials/FileUpload'
+
   export default {
     name: 'Toolbar',
+      components: { FileUpload },
       data() {
         return {
             activeIndex: 0
