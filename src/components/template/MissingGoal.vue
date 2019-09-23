@@ -7,10 +7,12 @@
             <el-col :span='24'>
                 <el-row>
                     <el-col :span='12'>
-                        <div class='silly-crap'>
-                            <i class='el-icon-folder'></i>
-                            <span>Open Goal from File</span>
-                        </div>
+                        <FileUpload>
+                            <div class='silly-crap'>
+                                <i class='el-icon-folder'></i>
+                                <span>Open Goal from File</span>
+                            </div>
+                        </FileUpload>
                     </el-col>
                     <el-col :span='12'>
                         <div class='silly-crap' @click='newGoal()'>
@@ -26,7 +28,10 @@
 
 <script>
     import EditorModel from '../../models/Editor'
+    import FileUpload from '../partials/FileUpload'
+
     export default {
+        components: { FileUpload },
         methods: {
             newGoal: () => EditorModel.newGoal()
         }
