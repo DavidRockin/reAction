@@ -43,7 +43,7 @@
                         throw new Error(`Invalid file uploaded`)
                     }
                     console.log(json)
-                    EditorModel.newGoal(json)
+                    EditorModel.newGoal(json, true)
                 } catch (e) {
                     console.log(e)
                 }

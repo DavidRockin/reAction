@@ -16,7 +16,7 @@ class EditorModel
      * Creates a new React Goal
      * @param data general informaion about the goal
      */
-    newGoal(data)
+    newGoal(data, open)
     {
         data = {
             _id: Math.random().toString(26),
@@ -32,7 +32,12 @@ class EditorModel
             ...data,
         }
         ReactStore.commit('addGoal', data)
-        //this.openGoal(data._id)
+
+        if (open) {
+            this.openGoal(data._id)
+        }
+
+        return data
     }
 
     /**
