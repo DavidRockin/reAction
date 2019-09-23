@@ -19,7 +19,6 @@ class EditorModel
     newGoal(data)
     {
         data = {
-            ...data,
             _id: Math.random().toString(26),
             name: 'Untitled Goal',
             description: 'This goal will do something magical!',
@@ -29,7 +28,8 @@ class EditorModel
             reactions: null,
             'action-health-max': '',
             'action-health-regen': '',
-            'action-health-damage': ''
+            'action-health-damage': '',
+            ...data,
         }
         ReactStore.commit('addGoal', data)
         //this.openGoal(data._id)
