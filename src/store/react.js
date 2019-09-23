@@ -13,10 +13,10 @@ export const ReactStore = new Vuex.Store({
     },
     mutations: {
         setActive (state, id) {
+            console.log(id)
             state.activeGoal = id
         },
         addGoal (state, goal) {
-            goal._id = Math.random().toString(26)
             goal.name += goal._id
             state.goals.push(goal)
         },

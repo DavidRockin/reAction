@@ -23,8 +23,7 @@
             updatePreview() {
                 this.$nextTick(function() {
                     console.log('fff')
-                    console.log(ReactStore.getters.activeGoal._id)
-                    this.previewGoalTarget = ReactStore.getters.activeGoal || 'l'
+                    this.previewGoalTarget = ReactStore.getters.activeGoal || ''
                 })
             }
         },

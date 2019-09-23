@@ -83,9 +83,9 @@ export default {
             intervalAmount: 0,
             intervalType: 's',
             goalData: {
-                name: 'My test goal',
-                description: 'This will do some magic',
-                author: 'VolmitSoftware Studio',
+                name: '',
+                description: '',
+                author: '',
                 enabled: true,
                 conditions: null,
                 reactions: null,
@@ -102,7 +102,9 @@ export default {
             ReactStore.commit('updateActive', t)
         },
         reset() {
-            this.goalData = ReactStore.getters.activeGoal
+            this.$nextTick(function() {
+                this.goalData = ReactStore.getters.activeGoal
+            })
         }
     },
     computed: {
@@ -110,6 +112,9 @@ export default {
         interval: function() {
             return this.intervalAmount + this.intervalType
         }
+    },
+    mounted() {
+        this.reset()
     },
     watch: {
         goalData: {

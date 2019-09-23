@@ -18,22 +18,21 @@ class EditorModel
      */
     newGoal(data)
     {
-        ReactStore.commit('addGoal', data || {
-            name: `Untitle Goal`
-        })
-    }
-
-    /**
-     * Switches to the last active goal
-     */
-    useLastGoal()
-    {
-        var id, g = Object.keys(ReactStore.state.goals)
-        if (g !== null && g.length !== 0 && (id = g.length - 1) >= 0) {
-            g = g[id]
-            g.index = id
-            this.openGoal(g, id)
+        data = {
+            ...data,
+            _id: Math.random().toString(26),
+            name: 'Untitled Goal',
+            description: 'This goal will do something magical!',
+            author: 'VolmitSoftware Studio',
+            enabled: true,
+            conditions: null,
+            reactions: null,
+            'action-health-max': '',
+            'action-health-regen': '',
+            'action-health-damage': ''
         }
+        ReactStore.commit('addGoal', data)
+        //this.openGoal(data._id)
     }
 
     /**
