@@ -42,8 +42,7 @@
                     if (null === json || (typeof json) !== 'object') {
                         throw new Error(`Invalid file uploaded`)
                     }
-                    console.log(json)
-                    EditorModel.newGoal(json, true)
+                    EditorModel.importGoal(json)
                 } catch (e) {
                     console.log(e)
                 }

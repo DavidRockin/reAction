@@ -51,7 +51,7 @@
         border: 1px solid #999;
         border-radius: 10px;
         max-width: 200px;
-        margin: 0 auto;
+        margin: 0 auto 3rem;
         padding: 2rem 3rem;
     }
     div.silly-crap:hover {

@@ -68,7 +68,7 @@ class EditorModel
      */
     importGoal(goal)
     {
-        ReactStore.commit('newGoal', goal)
+        return this.newGoal(goal, true)
     }
 
     /**

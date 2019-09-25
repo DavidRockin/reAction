@@ -7,7 +7,7 @@
                  @select='changeProject'
         >
             <el-menu-item v-for='(p, k) in $store.state.goals' :key='k' :index='k + ""' :data-gid='p._id'>
-                <span>{{ k }} :: {{ p.name || 'Untitled Project' }}</span>
+                <span>{{ p.name || 'Untitled Project' }}</span>
             </el-menu-item>
         </el-menu>
     </el-aside>
