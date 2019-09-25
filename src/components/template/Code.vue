@@ -51,8 +51,8 @@
         text-align: left;
         padding: 16px 20px;
         box-sizing: border-box;
-        y-overflow: auto;
-        x-overflow: hidden;
+        word-break: break-word;
+        overflow: hidden auto;
     }
     code > pre {
         white-space: pre-wrap;
