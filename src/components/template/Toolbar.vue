@@ -6,7 +6,7 @@
                     <i class="el-icon-folder"></i> Load Goal
                 </FileUpload>
             </el-menu-item>
-            <el-menu-item>
+            <el-menu-item @click="downloadGoal()">
                 <i class="el-icon-share"></i> Export
             </el-menu-item>
             <el-menu-item @click="newGoal()">
@@ -41,6 +41,9 @@
       },
         newGoal() {
           EditorModel.newGoal()
+        },
+        downloadGoal() {
+          EditorModel.exportGoal()
         }
     }
   }

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "element-ui": "^2.3.4",
+    "in-browser-download": "^2.0.0",
     "sass-loader": "^8.0.0",
     "scss-loader": "0.0.1",
     "vue": "^2.5.16",

@@ -1,4 +1,5 @@
 import { ReactStore } from '../store/react'
+import download from 'in-browser-download'
 
 /**
  * Editor Model
@@ -76,6 +77,11 @@ class EditorModel
      */
     exportGoal(goal)
     {
+        const json = goal || ReactStore.getters.activeGoal
+        if (null === json) return
+        delete json._id
+        var name = (goal.name || 'untitled goal').trim().toLowerCase().replace(' ', '-').replace(/([^A-Za-z0-9-_.]+)/, "")
+        download(JSON.stringify(json), name + '.json')
     }
 }
 
